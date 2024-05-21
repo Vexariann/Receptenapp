@@ -20,6 +20,9 @@ public class Seeder implements CommandLineRunner {
                     new Recipe("Broodje kaas"),
                     new Recipe("Frikandelbroodje"),
                     new Recipe("Roti")));
+
+                    new Ingredient("Lettuce");
+                    new Ingredient("Tomato");
         }
     }
 }
