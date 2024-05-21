@@ -23,17 +23,33 @@ function CreateElement(data) {
 }
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [title, setTitle] = useState("")
 
   useEffect(() => {
     GetRecipes();
   }, []);
 
+  const postNewRecipe = (event) => {
+    //event.preventDefault();
+    console.log(`You posted '${title}'`);
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: `${title}` })
+    };
+    fetch("http://localhost:8080/api/v1/recipe/create-recipe", requestOptions)
+      .then(response => response.json());
+  }
+
   return (
     <>
       <ul id='recipesList'></ul>
+      <form onSubmit={postNewRecipe}>
+        <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} />
+        <input type="submit" />
+      </form>
     </>
-  )
+  );
 }
 
 export default App
