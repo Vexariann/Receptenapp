@@ -15,4 +15,8 @@ public class recipe {
     long Id;
 
     String title;
+
+    public recipe(String title) {
+        this.title = title;
+    }
 }
