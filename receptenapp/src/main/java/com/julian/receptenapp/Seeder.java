@@ -9,17 +9,17 @@ import java.util.List;
 @Component
 @RequiredArgsConstructor
 public class Seeder implements CommandLineRunner {
-    private final recipeRepository recipeRepository;
+    private final RecipeRepository recipeRepository;
 
     @Override
     public void run(String... args) throws Exception {
         if(recipeRepository.count() == 0){
             recipeRepository.saveAll(List.of(
-                    new recipe("pannenkoeken"),
-                    new recipe("Pizza"),
-                    new recipe("Broodje kaas"),
-                    new recipe("Frikandelbroodje"),
-                    new recipe("Roti")));
+                    new Recipe("pannenkoeken"),
+                    new Recipe("Pizza"),
+                    new Recipe("Broodje kaas"),
+                    new Recipe("Frikandelbroodje"),
+                    new Recipe("Roti")));
         }
     }
 }

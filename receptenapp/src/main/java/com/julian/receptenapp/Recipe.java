@@ -9,14 +9,16 @@ import lombok.Setter;
 @Entity
 @Getter
 @Setter
-public class recipe {
+public class Recipe {
     @GeneratedValue
     @Id
     long Id;
 
     String title;
 
-    public recipe(String title) {
+    public Recipe(){};
+
+    public Recipe(String title) {
         this.title = title;
     }
 }
