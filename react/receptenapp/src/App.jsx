@@ -1,10 +1,12 @@
 import { useEffect, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
 
+// TODO:
+// read up on mapping in react
+// fetch should be done within the useEffect and the data should be saved within useState as an array
+// mapping in react can already render HTML. see it as some kind of foreach loop that is writing the foreach loop for you
+
 function GetRecipes() {
-  //fetch("http://localhost:8080/api/v1/recipe").then(response => response.json()).then((data) => data.forEach(data => { console.log("id: ", data.id, " title: ", data.title) })).catch(error => console.error(error));
   fetch("http://localhost:8080/api/v1/recipe")
     .then(response => response.json())
     .then((data) => data.forEach(data => { CreateElement(data); }))
@@ -23,11 +25,13 @@ function CreateElement(data) {
 }
 
 function App() {
-  const [title, setTitle] = useState("")
+  const [recipes, setRecipes] = useState()
 
-  useEffect(() => {
-    GetRecipes();
-  }, []);
+  // useEffect(() => {
+  //   GetRecipes();
+  // }, []);
+
+  useEffect(() => { fetch("https://localhost:8080/api/v1/recipe").then((response) => setRecipes(response)) }, []);
 
   const postNewRecipe = (event) => {
     //event.preventDefault();
